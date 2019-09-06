@@ -23,7 +23,7 @@ while total_retries >= round:
     elif high_number:
         print('Sorry, you lost! Your number is above the secret number.')
     round += 1
-print('End of the game!')
+print('End of the game! Thank you!')
 
 
 
