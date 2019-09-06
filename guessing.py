@@ -4,7 +4,7 @@ print('*****************************')
 
 secret_number = 42
 total_retries = 3
-round = 1
+rounds = 1
 
 while total_retries >= round:
 
