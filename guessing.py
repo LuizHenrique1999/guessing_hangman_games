@@ -1,29 +1,50 @@
+import random
+
 print('*****************************')
 print('Welcome to the Guessing Game!')
 print('*****************************')
 
-secret_number = 42
-total_retries = 3
-rounds = 1
+total_retries = 0
+random_number = random.randrange(1, 101)
+points = 1000
 
-while total_retries >= round:
+print('What difficulty level do you want to play?')
+print('(1) Easy (2) Medium (3) Hard')
 
-    attempt = int(input("Enter your secret number: "))
+level = int(input("Enter the level: "))
+
+if level == 1:
+    total_retries = 20
+elif level == 2:
+    total_retries = 10
+else:
+    total_retries = 5
+
+for rounds in range(1, total_retries + 1):
+
+    attempt = int(input("Enter a number between 1 and 100: "))
     print(f'You entered a number: {attempt}')
-    print(f'Attempt {round} of {total_retries}')
+    print(f'Attempt {rounds} of {total_retries}')
 
-    got_right = attempt == secret_number
-    low_number = attempt < secret_number
-    high_number = attempt > secret_number
+    if attempt < 1 or attempt > 100:
+        print('You must enter a number between 1 and 100!')
+        continue
+
+    got_right = attempt == random_number
+    low_number = attempt < random_number
+    high_number = attempt > random_number
 
     if got_right:
-        print('Congratulations, you won!')
+        print(f'Congratulations, you won!')
+        break
     elif low_number:
         print('Sorry, you lost! Your number is below the secret number.')
     elif high_number:
         print('Sorry, you lost! Your number is above the secret number.')
-    round += 1
-print('End of the game! Thank you!')
+    lost_points = abs(random_number - attempt)
+    points = points - lost_points
+print(f'End of the game! You scored {points} points!')
+
 
 
 
